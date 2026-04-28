@@ -539,6 +539,7 @@ em {
 .cb__c { color: var(--muted); }
 .cb__k { color: var(--sage-deep); }
 .cb__hl { color: var(--sage); }
+.cb__v { color: var(--ink-soft); }
 
 /* ============================================================
    STATS GRID — THE_NUMBERS
@@ -698,54 +699,73 @@ a.contact__val:hover {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 720px) {
-  .topbar { padding: 12px 20px; font-size: 11px; }
+  body { font-size: 17px; overflow-x: hidden; }
+
+  .topbar { padding: 10px 16px; font-size: 10px; gap: 8px; }
+  .topbar__crumb { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
   .topbar__date { display: none; }
-  .page { padding: 48px 22px 80px; }
 
-  body { font-size: 17px; }
+  .page { padding: 40px 18px 80px; }
 
-  .kicker { margin-bottom: 48px; font-size: 11px; }
-  .hero__title { font-size: 44px; }
-  .hero__lede { font-size: 17px; margin-bottom: 40px; }
+  .kicker { margin-bottom: 40px; font-size: 10px; letter-spacing: 0.01em; }
+  .hero__title { font-size: 40px; }
+  .hero__lede { font-size: 17px; margin-bottom: 36px; }
 
-  .profile { margin: 40px 0 64px; }
-  .profile__code { padding: 22px 18px; font-size: 12px; line-height: 1.7; border-radius: 10px; }
+  .profile { margin: 36px 0 56px; }
+  .profile__code { padding: 18px 16px; font-size: 11.5px; line-height: 1.7; border-radius: 10px; }
 
-  .section { margin: 64px 0; }
-  .sec__title { font-size: 32px; }
-  .sec__title--soft { font-size: 22px; }
-  .sec__lede { font-size: 18px; }
-  .sec__body { font-size: 17px; }
+  .section { margin: 56px 0; }
+  .sec__title { font-size: 30px; }
+  .sec__title--soft { font-size: 21px; }
+  .sec__lede { font-size: 17px; }
+  .sec__body { font-size: 16px; max-width: 100%; }
+  .sec__meta { font-size: 13px; }
 
-  .bullets li { font-size: 16px; padding-left: 28px; padding-top: 16px; padding-bottom: 16px; }
+  .bullets li { font-size: 15px; padding-left: 28px; padding-top: 14px; padding-bottom: 14px; }
 
-  .chipbox { padding: 20px 22px; }
-  .callout { padding: 18px 22px; }
-  .callout p { font-size: 16px; }
+  .chipbox { padding: 18px 18px; }
+  .chips li { font-size: 12px; padding: 6px 11px; }
+  .callout { padding: 16px 18px; }
+  .callout p { font-size: 15px; }
+  .callout--big { padding: 22px 20px; }
+  .callout--big p { font-size: 16px; }
 
   .logos { grid-template-columns: 1fr 1fr; }
-  .logo { border-right: 1px solid var(--line); }
+  .logo { padding: 22px 16px; border-right: 1px solid var(--line); }
   .logo:nth-child(2n) { border-right: none; }
+  .logo__name { font-size: 18px; }
+
+  .timeline__role { font-size: 18px; }
+  .timeline__co { font-size: 15px; }
+  .timeline__body { font-size: 15px; max-width: 100%; }
+
+  .pullquote { font-size: 22px; padding-left: 18px; }
 
   .stats { grid-template-columns: 1fr; }
-  .stat { border-right: none !important; padding: 28px 24px; }
+  .stat { border-right: none !important; padding: 24px 20px; }
   .stat__num { font-size: 40px; }
+  .stat__lbl { max-width: 100%; }
 
   .threecol { grid-template-columns: 1fr; }
   .threecol__col { border-right: none; border-bottom: 1px solid var(--line); }
   .threecol__col:last-child { border-bottom: none; }
 
-  .contacts { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .contacts { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+  .contact__val { font-size: 16px; }
 
-  .codeblock { padding: 20px 18px; font-size: 12px; border-radius: 10px; }
+  .codeblock { padding: 18px 16px; font-size: 12px; border-radius: 10px; }
 
-  .rule { margin: 56px 0; }
+  .rule { margin: 48px 0; }
+  .endline { font-size: 10px; }
 }
 
 @media (max-width: 420px) {
-  .hero__title { font-size: 38px; }
-  .sec__title { font-size: 28px; }
+  .page { padding: 32px 16px 60px; }
+  .hero__title { font-size: 34px; }
+  .sec__title { font-size: 26px; }
+  .profile__code { font-size: 10.5px; }
   .contacts { grid-template-columns: 1fr; }
   .logos { grid-template-columns: 1fr; }
   .logo { border-right: none; }
+  .endline { display: flex; flex-direction: column; gap: 4px; }
 }
