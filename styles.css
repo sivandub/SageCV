@@ -119,38 +119,61 @@ em {
 }
 
 /* ============================================================
-   AGENT.PROFILE code block
+   AGENT.PROFILE — editorial list style
    ============================================================ */
 .profile {
   margin: 60px 0 100px;
 }
 
-.profile__code {
-  background: var(--paper-warm);
+.profile__kicker {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+.profile__list {
+  margin: 0;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 32px 36px;
-  font-family: var(--mono);
-  font-size: 14px;
-  line-height: 1.85;
-  color: var(--ink-soft);
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-x: auto;
+  overflow: hidden;
+  background: var(--paper-warm);
 }
 
-.profile__head {
-  font-size: 13px;
+.profile__row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.profile__row:last-child { border-bottom: none; }
+
+.profile__lbl {
+  font-family: var(--mono);
+  font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.04em;
-  font-weight: 500;
+  margin: 0;
 }
 
-.profile__rule { color: var(--line); display: inline-block; }
+.profile__val {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.5;
+}
 
-.profile__k { color: var(--muted); }
-.profile__v { color: var(--ink); }
-.profile__hl { color: var(--sage); font-weight: 500; }
+.profile__val--hl {
+  color: var(--sage);
+  font-weight: 500;
+}
 
 /* ============================================================
    SECTION
@@ -712,7 +735,8 @@ a.contact__val:hover {
   .hero__lede { font-size: 17px; margin-bottom: 36px; }
 
   .profile { margin: 36px 0 56px; }
-  .profile__code { padding: 18px 16px; font-size: 11.5px; line-height: 1.7; border-radius: 10px; }
+  .profile__row { grid-template-columns: 1fr; gap: 4px; padding: 14px 18px; }
+  .profile__val { font-size: 16px; }
 
   .section { margin: 56px 0; }
   .sec__title { font-size: 30px; }
