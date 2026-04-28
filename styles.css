@@ -1,0 +1,751 @@
+/* ============================================================
+   Sivan Dubinsky → Sage · BDR Toronto
+   Editorial typography, monospace function-call section heads,
+   green italic emphasis. Modeled on sqresume.com's structure.
+   ============================================================ */
+
+:root {
+  /* Sage palette */
+  --sage-bright: #00dc06;        /* Sage's primary brand green */
+  --sage:        #008f04;        /* italic emphasis on white — readable */
+  --sage-deep:   #004d02;        /* hover / strong */
+  --sage-tint:   #effdef;        /* very light wash */
+  --sage-line:   #cdebca;        /* tinted dividers */
+
+  /* Ink + paper */
+  --ink:        #161614;
+  --ink-soft:   #2c2a26;
+  --paper:      #ffffff;
+  --paper-warm: #fafaf6;
+  --line:       #e6e3db;
+  --muted:      #8a8579;
+
+  /* Type */
+  --serif: 'Fraunces', 'Tiempos Headline', Georgia, serif;
+  --mono:  'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+
+em {
+  font-style: italic;
+  color: var(--sage);
+}
+
+::selection { background: var(--sage-tint); color: var(--ink); }
+
+/* ============================================================
+   TOPBAR — echoes Shawn's PDF header crumb
+   ============================================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar__crumb { letter-spacing: -0.005em; }
+.topbar__date { font-family: var(--mono); }
+
+/* ============================================================
+   PAGE CONTAINER
+   ============================================================ */
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 80px 32px 120px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.kicker {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin: 0 0 80px;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(48px, 7.6vw, 92px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin: 0 0 40px;
+  color: var(--ink);
+}
+
+.hero__title em {
+  font-style: italic;
+  color: var(--sage);
+  font-weight: 500;
+}
+
+.hero__lede {
+  font-size: 19px;
+  line-height: 1.55;
+  max-width: 60ch;
+  margin: 0 0 60px;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   AGENT.PROFILE code block
+   ============================================================ */
+.profile {
+  margin: 60px 0 100px;
+}
+
+.profile__code {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 32px 36px;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+.profile__head {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+.profile__rule { color: var(--line); display: inline-block; }
+
+.profile__k { color: var(--muted); }
+.profile__v { color: var(--ink); }
+.profile__hl { color: var(--sage); font-weight: 500; }
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+.section {
+  margin: 100px 0;
+}
+
+.sec__num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 36px;
+  letter-spacing: 0.02em;
+}
+
+.sec__num::first-letter,
+.sec__num {
+  /* Highlight the leading digits in green */
+}
+
+/* highlight only the leading number/code */
+.sec__num {
+  display: inline-block;
+  position: relative;
+}
+.sec__num::before {
+  content: "";
+}
+
+/* Apply green to first 2 chars via a span class only on the inner numerals would be ideal,
+   but we use a simple trick: color the first child with ::first-line on the kicker block */
+
+.sec__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 28px;
+  color: var(--ink);
+}
+
+.sec__title em {
+  font-style: italic;
+  color: var(--sage);
+  font-weight: 500;
+}
+
+.sec__title--soft {
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-size: clamp(26px, 3.6vw, 40px);
+  margin-top: -8px;
+  margin-bottom: 32px;
+}
+
+.sec__title--muted {
+  color: var(--muted);
+}
+.sec__title--muted em {
+  color: var(--sage);
+}
+
+.sec__lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-soft);
+  margin: 28px 0;
+  line-height: 1.45;
+}
+
+.sec__lede em { color: var(--sage); }
+
+.sec__note {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--muted);
+  margin: 36px 0 0;
+}
+
+.sec__meta {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+}
+
+.sec__meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.sec__body {
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+  max-width: 64ch;
+}
+
+/* ============================================================
+   RULE / HR
+   ============================================================ */
+.rule {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 80px 0;
+}
+
+.rule--meta {
+  margin: 16px 0 28px;
+}
+
+/* ============================================================
+   BULLETS — arrow style
+   ============================================================ */
+.bullets {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.bullets li {
+  position: relative;
+  padding: 22px 0 22px 36px;
+  border-bottom: 1px solid var(--line);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.bullets li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  color: var(--sage);
+  font-family: var(--mono);
+  font-weight: 500;
+}
+
+.bullets strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ============================================================
+   CHIP BOX — "BUYERS / TOOLS / WHATEVER"
+   ============================================================ */
+.chipbox {
+  margin: 32px 0;
+  padding: 28px 32px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-warm);
+}
+
+.chipbox__head {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin: 0 0 16px;
+}
+
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips li {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding: 7px 13px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.chips li:hover {
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+/* ============================================================
+   CALLOUT — "WHY THIS MATTERS FOR SAGE"
+   ============================================================ */
+.callout {
+  margin: 36px 0 0;
+  padding: 24px 28px;
+  border-left: 3px solid var(--sage);
+  background: var(--sage-tint);
+  border-radius: 0 12px 12px 0;
+}
+
+.callout__head {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--sage);
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.callout em {
+  font-style: italic;
+  color: var(--sage-deep);
+  font-weight: 500;
+}
+
+.callout--big {
+  margin-top: 56px;
+  padding: 32px 36px;
+  border-left-width: 4px;
+}
+
+.callout--big p { font-size: 20px; }
+
+/* ============================================================
+   LOGOS — "CLOSED PERSONALLY"
+   ============================================================ */
+.logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  margin: 32px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper-warm);
+}
+
+.logo {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo:last-child { border-right: none; }
+
+.logo__name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.logo__sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   TIMELINE — Foundation section
+   ============================================================ */
+.timeline {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline__row {
+  position: relative;
+  padding: 0 0 40px 36px;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--sage);
+}
+
+.timeline__date {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--sage);
+  margin: 0 0 6px;
+  letter-spacing: 0.04em;
+}
+
+.timeline__role {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.timeline__co {
+  font-style: italic;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.timeline__body {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+.timeline__body strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   PULLQUOTE
+   ============================================================ */
+.pullquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.3;
+  color: var(--muted);
+  margin: 40px 0;
+  padding: 8px 0 8px 24px;
+  border-left: 3px solid var(--sage);
+  max-width: 56ch;
+}
+
+.pullquote em {
+  color: var(--sage);
+  font-style: italic;
+}
+
+/* ============================================================
+   CODE BLOCK — pseudo-trace
+   ============================================================ */
+.codeblock {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 32px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  margin: 32px 0;
+}
+
+.cb__c { color: var(--muted); }
+.cb__k { color: var(--sage-deep); }
+.cb__hl { color: var(--sage); }
+
+/* ============================================================
+   STATS GRID — THE_NUMBERS
+   ============================================================ */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 56px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper-warm);
+}
+
+.stat {
+  padding: 36px 32px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stat:nth-child(2n) { border-right: none; }
+
+.stat__num {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 600;
+  color: var(--sage);
+  margin: 0 0 8px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.stat__lbl {
+  font-size: 16px;
+  color: var(--ink);
+  margin: 0 0 12px;
+  line-height: 1.4;
+  max-width: 28ch;
+}
+
+.stat__src {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* ============================================================
+   THREE-COLUMN — TODAY / TOMORROW / ALWAYS
+   ============================================================ */
+.threecol {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin: 56px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.threecol__col {
+  padding: 32px 28px;
+  border-right: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.threecol__col:nth-child(2) {
+  background: var(--paper-warm);
+}
+
+.threecol__col:last-child { border-right: none; }
+
+.threecol__kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0 0 14px;
+  letter-spacing: 0.06em;
+}
+
+.threecol__title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.threecol__col:nth-child(2) .threecol__title {
+  color: var(--sage);
+}
+
+.threecol__col p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   END / CONTACT
+   ============================================================ */
+.section--end {
+  margin-top: 100px;
+}
+
+.contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 36px 32px;
+  margin: 32px 0;
+}
+
+.contact { display: flex; flex-direction: column; gap: 4px; }
+
+.contact__lbl {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.contact__val {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+a.contact__val:hover {
+  color: var(--sage);
+  text-decoration-color: var(--sage);
+}
+
+.endline {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin: 28px 0 0;
+  letter-spacing: 0.02em;
+}
+
+.endline__c { color: var(--muted); }
+
+/* leading numeral / "END" highlighted in green */
+.sec__num .lead { color: var(--sage); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  .topbar { padding: 12px 20px; font-size: 11px; }
+  .topbar__date { display: none; }
+  .page { padding: 48px 22px 80px; }
+
+  body { font-size: 17px; }
+
+  .kicker { margin-bottom: 48px; font-size: 11px; }
+  .hero__title { font-size: 44px; }
+  .hero__lede { font-size: 17px; margin-bottom: 40px; }
+
+  .profile { margin: 40px 0 64px; }
+  .profile__code { padding: 22px 18px; font-size: 12px; line-height: 1.7; border-radius: 10px; }
+
+  .section { margin: 64px 0; }
+  .sec__title { font-size: 32px; }
+  .sec__title--soft { font-size: 22px; }
+  .sec__lede { font-size: 18px; }
+  .sec__body { font-size: 17px; }
+
+  .bullets li { font-size: 16px; padding-left: 28px; padding-top: 16px; padding-bottom: 16px; }
+
+  .chipbox { padding: 20px 22px; }
+  .callout { padding: 18px 22px; }
+  .callout p { font-size: 16px; }
+
+  .logos { grid-template-columns: 1fr 1fr; }
+  .logo { border-right: 1px solid var(--line); }
+  .logo:nth-child(2n) { border-right: none; }
+
+  .stats { grid-template-columns: 1fr; }
+  .stat { border-right: none !important; padding: 28px 24px; }
+  .stat__num { font-size: 40px; }
+
+  .threecol { grid-template-columns: 1fr; }
+  .threecol__col { border-right: none; border-bottom: 1px solid var(--line); }
+  .threecol__col:last-child { border-bottom: none; }
+
+  .contacts { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+
+  .codeblock { padding: 20px 18px; font-size: 12px; border-radius: 10px; }
+
+  .rule { margin: 56px 0; }
+}
+
+@media (max-width: 420px) {
+  .hero__title { font-size: 38px; }
+  .sec__title { font-size: 28px; }
+  .contacts { grid-template-columns: 1fr; }
+  .logos { grid-template-columns: 1fr; }
+  .logo { border-right: none; }
+}

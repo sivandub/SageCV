@@ -1,0 +1,3 @@
+# Netlify redirects file
+# Force trailing-slash-free URLs and 200 fallback for SPA-style routing
+/*  /index.html  200
